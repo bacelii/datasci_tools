@@ -1314,7 +1314,10 @@ def upstream_node(G,node,return_single=True):
         if return_single:
             raise Exception(f"More than one upstream node for node {node}: {curr_upstream_nodes}")
         else:
-            return [k[0] for k in curr_upstream_nodes]
+            try:
+                return [k[0] for k in curr_upstream_nodes]
+            except:
+                return [k for k in curr_upstream_nodes]
     else:
         if not nu.is_array_like(curr_upstream_nodes[0]):
             return curr_upstream_nodes[0]
